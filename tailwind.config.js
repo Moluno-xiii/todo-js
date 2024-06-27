@@ -8,6 +8,9 @@ module.exports = {
         pantonePurple: "#76697E",
         pantoneTangerine: "#DD4123",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],
