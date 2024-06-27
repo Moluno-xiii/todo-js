@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "name": "todo",
+  "description": "��t\u0000o\u0000d\u0000o\u0000 \u0000a\u0000p\u0000p\u0000l\u0000i\u0000c\u0000a\u0000t\u0000i\u0000o\u0000n\u0000\r\u0000 \u0000",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npx tailwindcss -i ./style.css -o ./src/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
