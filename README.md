@@ -5,7 +5,8 @@ This is a ToDo application inspired by [google tasks](https://assistant.google.c
 ## Features
 - Add tasks
 - Delete tasks
-- Undo delete tasks
+- Mark tasks as completed
+- Undo completed tasks
 - Edit tasks
 
 ## Technology Used

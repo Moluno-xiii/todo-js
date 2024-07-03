@@ -14,7 +14,7 @@
     <title>ToDo App</title>
     <script src="script.js"></script>
   </head>
-  <body class="font-poppins bg-slate-700">
+  <body class="font-poppins bg-slate-700" id="scroll-bar">
     <header
       class="flex flex-col items-center gap-y-3 py-4 border-b border-stone-400"
     >
@@ -22,13 +22,14 @@
         <img src="images/header-logo.svg" alt="logo" />
       </div>
     </header>
-    <main class="flex flex-col items-center mt-5 space-y-5">
+    <main class="flex flex-col items-center min-h-[100dvh] my-5 space-y-5">
       <div
         class="flex justify-center items-center flex-col sm:flex-row gap-2 px-2"
       >
         <input
           type="text"
           placeholder="Add todo"
+          id="placeholder"
           class="p-2 rounded-md focus:ring-offset-2 focus:ring-1 focus:ring-offset-pantoneBlue focus:outline-none focus:w-screen w-40 md:focus:w-96 duration-300 transition-all"
         />
         <button
@@ -38,130 +39,64 @@
           Add Task
         </button>
       </div>
-      <ul
-        class="w-full px-2 space-y-3 flex items-center justify-center flex-col"
-        id="taskContainer"
-      >
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
-        >
-          <span class="">Task 1</span>
-          <div class="space-x-2">
-            <button id="deleteTaskBtn" class="text-pantoneRed text-xs hover:text-opacity-75">
-              delete
-            </button>
-            <button id="editTaskBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              edit
-            </button>
-          </div>
-        </li>
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
-        >
-          <span class="">Task 2</span>
-          <div class="space-x-2">
-            <button id="deleteTaskBtn" class="text-pantoneRed text-xs hover:text-opacity-75">
-              delete
-            </button>
-            <button id="editTaskBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              edit
-            </button>
-          </div>
-        </li>
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
-        >
-          <span class="">Task 3</span>
-          <div class="space-x-2">
-            <button id="deleteTaskBtn" class="text-pantoneRed text-xs hover:text-opacity-75">
-              delete
-            </button>
-            <button id="editTaskBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              edit
-            </button>
-          </div>
-        </li>
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
-        >
-          <span class="">Task 4</span>
-          <div class="space-x-2">
-            <button id="deleteTaskBtn" class="text-pantoneRed text-xs hover:text-opacity-75">
-              delete
-            </button>
-            <button id="editTaskBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              edit
-            </button>
-          </div>
-        </li>
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
-        >
-          <span class="">Task 5</span>
-          <div class="space-x-2">
-            <button id="deleteTaskBtn" class="text-pantoneRed text-xs hover:text-opacity-75">
-              delete
-            </button>
-            <button id="editTaskBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              edit
-            </button>
-          </div>
-        </li>
-      </ul>
       <p class="text-2xl font-semibold" id="noTaskYet">No Tasks Yet</p>
+      <ul class="w-full px-2 space-y-3 flex items-center justify-center flex-col"
+        id="tasksList">
 
-      <span class="text-2xl font-semibold">Finished Tasks</span>
+      </ul>
+
       <ul
-        class="w-full px-2 space-y-3 flex items-center justify-center flex-col"
-        id="taskContainer"
+      class="w-full px-2 space-y-3 flex items-center justify-center flex-col"
+      id="finishedTasksContainer"
       >
-        <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
+      <span class="text-2xl font-semibold">Finished Tasks</span>
+      <li
+          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600"
         >
           <span class="">Task 1</span>
-          <div class="space-x-2">
-            <button id="undoDeleteBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              undo delete
+          <div class="space-x-2 flex flex-row">
+            <button id="undoDeleteBtn" class="text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue">
+              Mark as Unfinished
             </button>
           </div>
         </li>
         <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
+          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600"
         >
           <span class="">Task 2</span>
-          <div class="space-x-2">
-            <button id="undoDeleteBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              undo delete
+          <div class="space-x-2 flex flex-row">
+            <button id="undoDeleteBtn" class="text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue">
+              Mark as Unfinished
             </button>
           </div>
         </li>
         <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
+          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600"
         >
           <span class="">Task 3</span>
-          <div class="space-x-2">
-            <button id="undoDeleteBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              undo delete
+          <div class="space-x-2 flex flex-row">
+            <button id="undoDeleteBtn" class="text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue">
+              Mark as Unfinished
             </button>
           </div>
         </li>
         <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
+          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600"
         >
           <span class="">Task 4</span>
-          <div class="space-x-2">
-            <button id="undoDeleteBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              undo delete
+          <div class="space-x-2 flex flex-row">
+            <button id="undoDeleteBtn" class="text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue">
+              Mark as Unfinished
             </button>
           </div>
         </li>
         <li
-          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] bg-slate-600"
+          class="flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600"
         >
           <span class="">Task 5</span>
-          <div class="space-x-2">
-            <button id="undoDeleteBtn" class="text-pantoneLightBlue text-xs hover:text-opacity-75">
-              undo delete
+          <div class="space-x-2 flex flex-row">
+            <button id="undoDeleteBtn" class="text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue">
+              Mark as Unfinished
             </button>
           </div>
         </li>

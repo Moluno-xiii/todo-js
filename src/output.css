@@ -715,12 +715,13 @@ video {
   clear: none;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .box-border {
@@ -824,6 +825,10 @@ video {
 
 .h-10 {
   height: 2.5rem;
+}
+
+.min-h-\[100dvh\] {
+  min-height: 100dvh;
 }
 
 .w-32 {
@@ -1386,12 +1391,6 @@ video {
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1402,12 +1401,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
@@ -1863,6 +1856,11 @@ video {
   background-color: rgb(9 83 188 / var(--tw-bg-opacity));
 }
 
+.bg-pantoneLightBlue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 161 212 / var(--tw-bg-opacity));
+}
+
 .bg-slate-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
@@ -2160,11 +2158,6 @@ video {
 .text-blue-500 {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
-.text-pantoneBlue {
-  --tw-text-opacity: 1;
-  color: rgb(9 83 188 / var(--tw-text-opacity));
 }
 
 .text-pantoneLightBlue {
@@ -2558,6 +2551,19 @@ video {
   forced-color-adjust: none;
 }
 
+#scroll-bar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 5px;
+}
+
+#scroll-bar::-webkit-scrollbar-track {
+  background-color: white;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -2633,10 +2639,6 @@ video {
 
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
-}
-
-.focus\:ring-offset-pantoneGreen:focus {
-  --tw-ring-offset-color: #7C9670;
 }
 
 .focus\:ring-offset-pantoneBlue:focus {
