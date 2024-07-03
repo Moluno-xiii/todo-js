@@ -9,6 +9,7 @@ module.exports = {
         pantoneTangerine: "#DD4123",
         pantoneBlue: "#0953BC",
         pantoneRed: "#AA0A24",
+        pantoneLightBlue: "#6ea1d4",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
