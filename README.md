@@ -11,7 +11,7 @@ This is a ToDo application inspired by [google tasks](https://assistant.google.c
 
 ## Technology Used
 - HTML
-- CSS
+- Tailwind CSS
 - Vanilla JavaScript
 
 

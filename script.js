@@ -7,7 +7,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   let tasksArray = [];
-  const finishedTasksArray = [];
+  let finishedTasksArray = [];
   const myList = document.getElementById("tasksList");
   const addTask = document.getElementById("addTaskBtn");
   const placeholderElement = document.getElementById("placeholder");
@@ -16,10 +16,44 @@ document.addEventListener("DOMContentLoaded", () => {
     "finishedTasksContainer"
   );
 
-  const deleteItem = (itemID) => {
+  const handleAddTask = () => {
+    let taskText = placeholderElement.value.trim();
+    if (taskText) {
+      tasksArray.push({ id: tasksArray.length + 1, text: taskText });
+      placeholderElement.value = "";
+      renderTasks();
+      renderFinishedTasks();
+    }
+  };
+
+
+  const handleDeleteItem = (itemID) => {
     tasksArray = tasksArray.filter((item) => item.id !== itemID);
     renderTasks();
   };
+
+  const handleCheckedItem = (task) => {
+    finishedTasksArray.push({ id: task.id, text: task.text });
+    tasksArray = tasksArray.filter((item) => item.id !== task.id);
+    renderTasks();
+    renderFinishedTasks();
+  };
+
+  const handleUndoDelete = (task) => {
+    tasksArray.push({ id: task.id, text: task.text });
+    finishedTasksArray = finishedTasksArray.filter(
+      (item) => item.id !== task.id
+    );
+    renderTasks();
+    renderFinishedTasks();
+  };
+
+    addTask.onclick = handleAddTask;
+    placeholderElement.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        handleAddTask();
+      }
+    });
 
   const renderTasks = () => {
     myList.innerHTML = "";
@@ -51,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteButton.id = "deleteTaskBtn";
       deleteButton.className = "text-pantoneRed text-xs hover:text-opacity-75";
       deleteButton.textContent = "delete";
-      deleteButton.onclick = () => deleteItem(item.id);
+      deleteButton.onclick = () => handleDeleteItem(item.id);
 
       const editButton = document.createElement("button");
       editButton.id = "editTaskBtn";
@@ -61,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
+      checkbox.onclick = () => handleCheckedItem(item);
 
       divContainer.appendChild(deleteButton);
       divContainer.appendChild(editButton);
@@ -74,15 +109,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  addTask.onclick = () => {
-    let taskText = placeholderElement.value;
-    if (taskText) {
-      tasksArray.push({ id: tasksArray.length + 1, text: taskText });
-      placeholderElement.value = "";
-      renderTasks();
+  const renderFinishedTasks = () => {
+    finishedTasksContainer.innerHTML = "";
+    const finishedHeader = document.getElementById("finishedHeader");
+    if (!finishedTasksArray.length) {
+      finishedHeader.style.display = "none";
+    } else {
+      finishedHeader.style.display = "block";
     }
-    console.log(tasksArray);
+
+    finishedTasksArray.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.className =
+        "flex px-3 py-1 flex-row justify-between w-full max-w-[700px] items-center bg-slate-600";
+
+      const spanElement = document.createElement("span");
+      spanElement.textContent = item.text;
+
+      const divContainer = document.createElement("div");
+      divContainer.className = "space-x-2 flex flex-row";
+
+      const undoButton = document.createElement("button");
+      undoButton.id = "undoTaskBtn";
+      undoButton.className =
+        "text-white text-xs hover:text-opacity-75 p-2 duration-300 transition-all rounded-md bg-pantoneLightBlue";
+      undoButton.textContent = "Mark as Unfinished";
+      undoButton.onclick = () => handleUndoDelete(item);
+
+      divContainer.appendChild(undoButton);
+
+      listItem.appendChild(spanElement);
+      listItem.appendChild(divContainer);
+
+      console.log(listItem);
+      finishedTasksContainer.appendChild(listItem);
+    });
   };
 
   renderTasks();
+  renderFinishedTasks();
 });
