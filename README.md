@@ -1,6 +1,6 @@
 ﻿# ToDo Application
 
-This is a ToDo application built with HTML, CSS, and Vanilla JavaScript. It includes functionalities to add, delete, undo delete, and edit tasks.
+This is a ToDo application inspired by [google tasks](https://assistant.google.com/tasks)
 
 ## Features
 - Add tasks
