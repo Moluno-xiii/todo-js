@@ -7,7 +7,6 @@ This is a ToDo application inspired by [google tasks](https://assistant.google.c
 - Delete tasks
 - Mark tasks as completed
 - Undo completed tasks
-- Edit tasks
 
 ## Technology Used
 - HTML
