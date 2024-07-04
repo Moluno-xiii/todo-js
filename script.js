@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const addTask = document.getElementById("addTaskBtn");
   const placeholderElement = document.getElementById("placeholder");
   const noTask = document.getElementById("noTaskYet");
+  const clearAllTasks = document.getElementById("clearTasks");
+  const clearFinishedTasks = document.getElementById("clearFinishedTasks");
   const finishedTasksContainer = document.getElementById(
     "finishedTasksContainer"
   );
@@ -18,6 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
       renderFinishedTasks();
     }
   };
+
+  const onClearTasks =  () => {
+    tasksArray = [];
+    renderTasks()
+  }
+
+  const onClearFinishedTasks =  () => {
+    finishedTasksArray = [];
+    renderFinishedTasks()
+  }
 
   const handleDeleteItem = (itemID) => {
     tasksArray = tasksArray.filter((item) => item.id !== itemID);
@@ -52,8 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (tasksArray.length === 0) {
       noTask.style.display = "block";
+      clearAllTasks.style.display = "none";
     } else {
       noTask.style.display = "none";
+      clearAllTasks.style.display = "block";
     }
 
     if (finishedTasksArray.length === 0) {
@@ -61,6 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       finishedTasksContainer.style.display = "flex";
     }
+
+    clearAllTasks.onclick = onClearTasks
 
     tasksArray.forEach((item) => {
       const listItem = document.createElement("li");
@@ -95,8 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       listItem.appendChild(spanElement);
       listItem.appendChild(divContainer);
-
-      console.log(listItem);
       myList.appendChild(listItem);
     });
   };
@@ -106,9 +120,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const finishedHeader = document.getElementById("finishedHeader");
     if (!finishedTasksArray.length) {
       finishedHeader.style.display = "none";
+      clearFinishedTasks.style.display = "none";
     } else {
       finishedHeader.style.display = "block";
+      clearFinishedTasks.style.display = "block";
     }
+
+    clearFinishedTasks.onclick = onClearFinishedTasks
 
     finishedTasksArray.forEach((item) => {
       const listItem = document.createElement("li");
@@ -132,8 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       listItem.appendChild(spanElement);
       listItem.appendChild(divContainer);
-
-      console.log(listItem);
       finishedTasksContainer.appendChild(listItem);
     });
   };
@@ -141,6 +157,3 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTasks();
   renderFinishedTasks();
 });
-
-
-// add option to edit the items
