@@ -2622,8 +2622,8 @@ video {
   text-align: center;
 }
 
-.focus\:w-screen:focus {
-  width: 100vw;
+.focus\:w-\[95vw\]:focus {
+  width: 95vw;
 }
 
 .focus\:outline-none:focus {

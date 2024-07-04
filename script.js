@@ -1,10 +1,3 @@
-// Display all the items in the array as list items.
-// Add functions to pop and push items from the array (add / delete).
-// Display message if the array is empty
-// Add functions to edit the text a specific item of an array, using the ID of the item.
-// Add new array for completed tasks.
-// Add option to append an item completed tasks array to the normal array
-
 document.addEventListener("DOMContentLoaded", () => {
   let tasksArray = [];
   let finishedTasksArray = [];
@@ -25,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       renderFinishedTasks();
     }
   };
-
 
   const handleDeleteItem = (itemID) => {
     tasksArray = tasksArray.filter((item) => item.id !== itemID);
@@ -98,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       checkbox.onclick = () => handleCheckedItem(item);
 
       divContainer.appendChild(deleteButton);
-      divContainer.appendChild(editButton);
+    //   divContainer.appendChild(editButton);
       divContainer.appendChild(checkbox);
 
       listItem.appendChild(spanElement);
@@ -149,3 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTasks();
   renderFinishedTasks();
 });
+
+
+// add option to edit the items
