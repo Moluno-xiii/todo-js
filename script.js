@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const deleteButton = document.createElement("button");
       deleteButton.id = "deleteTaskBtn";
-      deleteButton.className = "text-pantoneRed text-xs hover:text-opacity-75";
+      deleteButton.className = "bg-pantoneRed hover:bg-opacity-70 transition-all duration-300 py-1 px-2 text-black text-xs hover:text-opacity-75";
       deleteButton.textContent = "delete";
       deleteButton.onclick = () => handleDeleteItem(item.id);
 
